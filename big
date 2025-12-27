@@ -1,22 +1,23 @@
-#include <stdio.h>
-#include <stdlib.h>
+#!/bin/bash
 
-int main(int argc, char *argv[]) {
-    if (argc != 4) {
-        printf("Usage: %s num1 num2 num3\n", argv[0]);
-        return 1;
-    }
+# Check if exactly 3 arguments are passed
+if [ $# -ne 3 ]; then
+    echo "Usage: $0 num1 num2 num3"
+    exit 1
+fi
 
-    int a = atoi(argv[1]);
-    int b = atoi(argv[2]);
-    int c = atoi(argv[3]);
+a=$1
+b=$2
+c=$3
 
-    int biggest = a;
+biggest=$a
 
-    if (b > biggest) biggest = b;
-    if (c > biggest) biggest = c;
+if [ $b -gt $biggest ]; then
+    biggest=$b
+fi
 
-    printf("The biggest number is: %d\n", biggest);
+if [ $c -gt $biggest ]; then
+    biggest=$c
+fi
 
-    return 0;
-}
+echo "The biggest number is: $biggest"
